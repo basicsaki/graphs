@@ -1,0 +1,75 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+#high_container {
+  /* min-width: 310px; */
+  max-width: 800px;
+  /* height: 400px; */
+  margin: 30px auto;
+}
+
+.nav-list li a {
+  color: white;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+  background: #c35656;
+}
+
+.navbar-default {
+  background-color: #755255;
+  border-color: #755255;
+  color: white;
+}
+
+.navbar-default .navbar-brand {
+  color: #fff;
+  font-family: "Indie Flower", cursive;
+  font-size: 28px;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #fff;
+  background-color: transparent;
+}
+
+.options {
+  background: #fbf9f9;
+  margin: 10px;
+  min-height: 100px;
+  box-shadow: 5px 4px 8px #7552551f;
+  text-align: left;
+  padding: 10px;
+}
+.btn-edit {
+  color: #f46e6e;
+  background-color: #f1e4e530;
+  border-color: #c10047;
+  font-weight: 700;
+  font-size: 14px;
+}
+.btn-edit:hover,
+.btn-edit:focus,
+.btn-edit.focus,
+.btn-edit:active,
+.btn-edit.active,
+.open > .dropdown-toggle.btn-edit {
+  color: #fff;
+  background-color: #f46e6e;
+  border-color: #f46e6e;
+}

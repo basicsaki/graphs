@@ -1,0 +1,164 @@
+<%= react_component("HelloWorld") %>
+
+<!-- Trigger the modal with a button -->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Graph Options</h4>
+      </div>
+      <div class="modal-body">
+      <%= form_tag bar_path,remote: true do %>
+        <div class="container">
+        <div class="row" style="width:75%;">
+        <div class="col col-sm-6 col-lg-6">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <%= text_field_tag :title,@title,:class=>"form-control",:id=>"title", :'aria-describedby'=>"emailHelp",:placeholder=>"Graph title" %>
+          <!--small id="titleHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+        </div>        
+      </div>
+        <div class="col col-sm-6 col-lg-6">
+        <div class="form-group">
+        <label for="title">Subtitle</label>
+        <%= text_field_tag :subtitle,@subtitle,:class=>"form-control",:id=>"subtitle", :'aria-describedby'=>"emailHelp",:placeholder=>"Graph title" %>
+      </div>
+      </div>
+      </div>
+      </div>
+<hr />
+      <div>
+      <h4 class="modal-title">X-axis</h4>
+      <div class="container">
+      <div class="row" style="width:75%;padding:0px 15px; ">
+
+      <div class="form-group">
+      
+        <label>Title</label>
+          <%= text_field_tag :xaxis_title,@xaxis_title,:class=>"form-control", :id=>"exampleInputEmail1",:'aria-describedby'=>"emailHelp",:placeholder=>"Enter X axis title" %>
+      </div>
+
+      <div class="form-group">
+      
+      <label>Categories</label>
+        <%= text_field_tag :xaxis_categories,@xaxis_categories,:class=>"form-control", :id=>"exampleInputEmail1",:'aria-describedby'=>"emailHelp",:placeholder=>"Enter X axis categories comma seperated values" %>
+        <small class="form-text text-muted">Comma seperated values</small>
+        </div>
+
+
+      </div>
+      </div>
+      </div>
+
+      <hr />
+
+      <div>
+      <h4 class="modal-title">Y-axis</h4>
+      <div class="container">
+      <div class="row" style="width:75%;padding:0px 15px; ">
+
+      <div class="form-group">
+      
+        <label>Title</label>
+          <%= text_field_tag :yaxis_title,@yaxis_title,:class=>"form-control", :id=>"exampleInputEmail1",:'aria-describedby'=>"emailHelp",:placeholder=>"Enter X axis title" %>
+        </div>
+      </div>
+      </div>
+      </div>
+      
+      </div>
+      <div class="modal-footer">
+      <%= submit_tag "Update",class: "btn btn-edit" %>
+      </div>
+      
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="options">
+<div style="margin:10px 0px;">
+<div class="pull-right">  <button type="button" class="btn btn-edit" data-toggle="modal" data-target="#myModal">Edit</button>
+</div>
+<div class="pull-left" style="font-size:24px;color:#616161;">Bar Chart</div>
+</div>
+<div class="" style="clear:both;">
+
+<div style="margin-top:20px;padding:15px 0px;color:#808080;">A bar chart or bar graph is a chart or graph that presents categorical data with rectangular bars with heights or lengths proportional to the values that they represent. The bars can be plotted vertically or horizontally. A vertical bar chart is sometimes called a line graph.</div>
+</div>
+
+
+
+<div id="high_container"></div>
+
+<script>
+Highcharts.chart('high_container', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: "<%= @title%>"
+    },
+    subtitle: {
+        text: "<%= @subtitle%>"
+    },
+    xAxis: {
+        categories: ["Africa", "America", "Asia", "Europe", "Oceania", "India"],
+        title: {
+            text: "<%= @xaxis_title%>"
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: '<%= @yaxis_title%>',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    tooltip: {
+        valueSuffix: ' millions'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Year 1800',
+        data: [107, 31, 635, 203, 2,700]
+    }, {
+        name: 'Year 1900',
+        data: [133, 156, 947, 408, 6,600]
+    }, {
+        name: 'Year 2000',
+        data: [814, 841, 3714, 727, 31,300]
+    }, {
+        name: 'Year 2016',
+        data: [1216, 1001, 4436, 738, 40,400]
+    }]
+});
+</script>
